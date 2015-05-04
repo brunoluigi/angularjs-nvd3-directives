@@ -580,6 +580,8 @@
                     forcey: '@',
                     delay: '@',
                     stacked: '@',
+                    showvalues: '@',
+                    valueformat: '&',
 
                     callback: '&',
 
@@ -676,7 +678,12 @@
                                         .rotateLabels(attrs.rotatelabels === undefined ? 0 : attrs.rotatelabels)
                                         .color(attrs.color === undefined ? nv.utils.defaultColor()  : scope.color())
                                         .delay(attrs.delay === undefined ? 1200 : attrs.delay)
-                                        .stacked(attrs.stacked === undefined ? false : (attrs.stacked === 'true'));
+                                        .stacked(attrs.stacked === undefined ? false : (attrs.stacked === 'true'))
+                                        .showValues(attrs.showvalues === undefined ? false : (attrs.showvalues === 'true'));
+
+                                    if(attrs.valueformat){
+                                        chart.valueFormat(scope.valueformat());
+                                    }
 
                                     if(attrs.tooltipcontent){
                                         chart.tooltipContent(scope.tooltipcontent());
